@@ -19,7 +19,7 @@ module Tugboat
               status_color = RED
             end
 
-            say "#{droplet.name} (ip: #{droplet.ip_address}, status: #{status_color}#{droplet.status}#{CLEAR}, region: #{droplet.region_id}, id: #{droplet.id})"
+            say "#{droplet.name} (ip: #{droplet.ip_address}, private-ip: #{droplet.private_ip_address}, status: #{status_color}#{droplet.status}#{CLEAR}, region: #{droplet.region_id}, id: #{droplet.id})"
           end
         end
 
