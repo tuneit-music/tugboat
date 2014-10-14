@@ -8,10 +8,12 @@ A command line tool for interacting with your [DigitalOcean](https://www.digital
 
     gem install tugboat
 
+Please note that Tugboat version 0.2.0 and up requires Ruby 1.9 or higher.
+
 ## Configuration
 
 Run the configuration utility, `tugboat authorize`. You can grab your keys
-[here](https://www.digitalocean.com/api_access).
+[here](https://cloud.digitalocean.com/api_access).
 
     $ tugboat authorize
     Enter your client key: foo

@@ -19,7 +19,7 @@ foo (ip: 33.33.33.10, status: \e[32mactive\e[0m, region: 1, id: 100823)
       expect(a_request(:get, "https://api.digitalocean.com/droplets?api_key=#{api_key}&client_id=#{client_key}")).to have_been_made
     end
 
-    it "returns an error when no droplets exist" do
+    it "returns an error message when no droplets exist" do
       stub_request(:get, "https://api.digitalocean.com/droplets?api_key=#{api_key}&client_id=#{client_key}").
            to_return(:status => 200, :body => fixture("show_droplets_empty"))
 
@@ -29,6 +29,18 @@ foo (ip: 33.33.33.10, status: \e[32mactive\e[0m, region: 1, id: 100823)
 You don't appear to have any droplets.
 Try creating one with \e[32m`tugboat create`\e[0m
       eos
+
+      expect(a_request(:get, "https://api.digitalocean.com/droplets?api_key=#{api_key}&client_id=#{client_key}")).to have_been_made
+    end
+    it "shows no output when --quiet is set" do
+      stub_request(:get, "https://api.digitalocean.com/droplets?api_key=#{api_key}&client_id=#{client_key}").
+           to_return(:status => 200, :body => fixture("show_droplets_empty"))
+
+      @cli.options = @cli.options.merge(:quiet => true)
+      @cli.droplets
+
+      # Should be /dev/null not stringIO
+      expect($stdout).to be_a File
 
       expect(a_request(:get, "https://api.digitalocean.com/droplets?api_key=#{api_key}&client_id=#{client_key}")).to have_been_made
     end

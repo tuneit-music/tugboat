@@ -1,4 +1,42 @@
-## 0.0.9 (Unreleased)
+## 0.2.1 (UNRELEASED)
+
+
+## 0.2.0 (Feburary 15, 2014)
+
+FEATURES:
+
+  - [Pierre](https://github.com/spearway) added an `info-image` and `destroy-image`
+  command, letting you deal with your images from Tugboat. It's great. [GH-91]
+  - [Pierre](https://github.com/spearway) also added a `rebuild` command,
+  letting you take an existing droplet and recreate it from scratch. [GH-90]
+
+IMPROVEMENTS:
+
+  - [Dale](https://github.com/Vel0x) made it so fuzzy name searching
+  is case insensitive. We wonder why we didn't do this earlier, really. [GH-88]
+  - There is now a `--quiet/-q` flag, which makes Tugboat be silent, as it
+  can get a little obnoxious. [GH-87]
+  - [Andrew](https://github.com/4n3w) hooked up a `backups_enabled` option
+  for creating droplets. [GH-82]
+
+
+## 0.0.9 (December 24, 2013)
+
+FEATURES:
+
+  - [Pete](https://github.com/petems) added the ability to add an
+  ssh key to your account. [GH-64]
+  - [Caleb](https://github.com/calebreach) gave us an easy way
+  to pass a command through to a machine with the `-c` command. [GH-73]
+
+IMPROVEMENTS:
+
+  - [Andrew](https://github.com/4n3w) added a private networking option. [GH-75]
+
+BUG FIXES:
+
+  - [Zo](https://github.com/obradovic) made our default image 13.04 [GH-76]
+  - Issues with the JSON dependency in 2.0.0 were resolved. [GH-80]
 
 
 ## 0.0.8 (September 7, 2013)

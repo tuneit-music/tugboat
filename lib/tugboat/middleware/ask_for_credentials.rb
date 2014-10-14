@@ -3,7 +3,8 @@ module Tugboat
     # Ask for user credentials from the command line, then write them out.
     class AskForCredentials < Base
       def call(env)
-        say "Note: You can get this information from digitalocean.com/api_access", :yellow
+        say "Note: You can get this information from https://cloud.digitalocean.com/api_access", :yellow
+        say "Also Note: Tugboat is setup to work with v1 of the Digital Ocean API (https://developers.digitalocean.com/v1/regions/)", :yellow
         say
         client_key = ask "Enter your client key:"
         api_key = ask "Enter your API key:"
@@ -15,13 +16,14 @@ module Tugboat
         say "Defaults can be changed at any time in your ~/.tugboat configuration file."
         say
         region   = ask "Enter your default region ID (optional, defaults to 1 (New York)):"
-        image    = ask "Enter your default image ID (optional, defaults to 350076 (Ubuntu 13.04 x64)):"
+        image    = ask "Enter your default image ID (optional, defaults to 3240036 (Ubuntu 14.04 x64)):"
         size     = ask "Enter your default size ID (optional, defaults to 66 (512MB)):"
         ssh_key  = ask "Enter your default ssh key ID (optional, defaults to none):"
         private_networking = ask "Enter your default for private networking (optional, defaults to false):"
+        backups_enabled = ask "Enter your default for enabling backups (optional, defaults to false):"
 
         # Write the config file.
-        env['config'].create_config_file(client_key, api_key, ssh_key_path, ssh_user, ssh_port, region, image, size, ssh_key, private_networking)
+        env['config'].create_config_file(client_key, api_key, ssh_key_path, ssh_user, ssh_port, region, image, size, ssh_key, private_networking, backups_enabled)
         env['config'].reload!
 
         @app.call(env)
